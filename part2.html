@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conteúdo - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="inicio">
+
+
+  <!-- Menu fixo no topo -->
+  <header class="menu-topo">
+    <h1>Quiz sobre os planetas</h1>
+    <nav>
+            <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+  </header>
+
+  
+  <div class="hero2" style="margin-top: 100px;">
+    <h1>Quiz sobre os Planetas</h1>
+  <form id="quizForm">
+    <!-- PERGUNTAS SERÃO INSERIDAS PELO SCRIPT -->
+  </form>
+ <button class="btn-enviar" onclick="enviarQuiz()">Enviar</button>
+  </main>
+</div>
+<div class="user-avatar" id="userAvatar">
+  <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+</div>
+
+<!-- Janela de informações -->
+<!-- Janela de informações -->
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+  <button id="closePopup">Fechar</button>
+  <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+  <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+<button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</div>
+<footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

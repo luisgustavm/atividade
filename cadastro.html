@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="centralizado">
+
+
+  <div class="login-container cadastro-container">
+    <h2>Cadastro</h2>
+
+    <!-- Adicionado id="formCadastro" -->
+    <form id="formCadastro">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
+
+      <label for="usuario">Usuário</label>
+      <input type="text" id="usuario" name="usuario" placeholder="Escolha um usuário" required />
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required />
+
+      <label for="confirmSenha">Confirmar Senha</label>
+      <input type="password" id="confirmSenha" name="confirmSenha" placeholder="Confirme sua senha" required />
+
+      <button type="submit">Cadastrar</button>
+      <button type="button" class="btn-login" onclick="window.location.href='index.html'">Voltar ao Login</button>
+    </form>
+  </div>
+
+  <!-- Agora o script é carregado corretamente -->
+  <script src="script.js"></script>
+</body>
+</html>

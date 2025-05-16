@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conteúdo - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="centralizado">
+
+  <!-- Menu fixo no topo -->
+  <header class="menu-topo">
+    <h1>Feedback</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <div class="feedback-section">
+    <h2>Deixe sua opinião sobre o site</h2>
+
+    <!-- Formulário único que engloba tudo -->
+  <form id="feedbackForm" action="https://formsubmit.co/lg3666745@gmail.com" method="POST">
+  <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+  <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+
+  <h3>Avalie nosso serviço</h3>
+  <div class="estrelas"> <!-- Corrigido o nome da classe -->
+    <span class="estrela" data-valor="1">&#9733;</span>
+    <span class="estrela" data-valor="2">&#9733;</span>
+    <span class="estrela" data-valor="3">&#9733;</span>
+    <span class="estrela" data-valor="4">&#9733;</span>
+    <span class="estrela" data-valor="5">&#9733;</span>
+  </div>
+  <input type="hidden" name="nota" id="nota" value="0">
+
+  <textarea name="comentario" placeholder="Deixe seu comentário (opcional)"></textarea>
+  <button type="submit" class="btn-enviar">Enviar avaliação</button>
+</form>
+  </div>
+
+  <!-- Janela de informações -->
+  <div class="user-info-popup" id="userInfoPopup">
+    <h3>Informações do Usuário</h3>
+    <p><strong>Nome:</strong> <span></span></p>
+    <p><strong>Email:</strong> <span></span></p>
+    <button id="closePopup">Fechar</button>
+    <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+    <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+    <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+    <footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+  </div>
+
+</body>
+</html>

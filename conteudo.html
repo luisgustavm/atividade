@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conteúdo - Fundo Estrelado</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="inicio">
+
+
+  <!-- Menu fixo no topo -->
+  <header class="menu-topo">
+    <h1>Início</h1>
+    <nav>
+          <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+  </header>
+
+<main>
+   <section class="hero">
+    <h2>Bem-vindo ao Universo Interativo!</h2>
+    <p>Explore o cosmos, aprenda brincando e descubra curiosidades incríveis sobre o espaço.</p>
+    <section class="destaques">
+    <h3>O que você encontrará aqui?</h3>
+    <ul>
+      <li>🪐 Informações dos nossos planetas</li>
+      <li>📘 Conteúdos interativos como Quiz</li>
+      <li>👨‍🚀 Avatar personalizado e conquistas</li>
+    </ul>
+  </section>
+
+  <!-- Depoimentos ou chamada para ação -->
+  <section class="depoimentos">
+    <h3>Depoimentos de outros exploradores:</h3>
+    <blockquote>"Aprendi mais sobre planetas aqui do que na escola!" — Ana, 10 anos</blockquote>
+    <blockquote>"Muito divertido e fácil de usar." — Lucas, 11 anos</blockquote>
+  </section>
+  </section>
+
+  <!-- Destaques / Funcionalidades -->
+  
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+
+
+<!-- Avatar no canto -->
+<div class="user-avatar" id="userAvatar">
+  <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+</div>
+
+<!-- Janela de informações -->
+<!-- Janela de informações -->
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+  <button id="closePopup">Fechar</button>
+  <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+  <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+<button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</div>
+</body>
+</body>
+</html>

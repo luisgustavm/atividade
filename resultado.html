@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado do Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="inicio">
+  <h1>Resultado do Quiz</h1>
+  <div id="resultadoContainer"></div>
+   <button onclick="window.location.href='part2.html'" class="btn-saiba-mais">Voltar</button>
+
+  <script>
+    const perguntas = JSON.parse(localStorage.getItem("perguntasQuiz")) || [];
+    const respostasUsuario = JSON.parse(localStorage.getItem("respostasUsuario"));
+
+    fetch("script.js")
+      .then(r => r.text())
+      .then(code => {
+        const perguntasArray = eval(code.match(/const perguntas = \[(.*?)\];/s)[0] + " perguntas;");
+        const container = document.getElementById("resultadoContainer");
+
+        perguntasArray.forEach((q, i) => {
+          const userResp = respostasUsuario[i];
+          const correta = q.correta;
+          const cor = userResp === correta ? "green" : "red";
+          container.innerHTML += `
+            <div style="margin-bottom: 15px;">
+              <p><strong>${i + 1}. ${q.pergunta}</strong></p>
+              <p style="color: ${cor};">
+                Sua resposta: ${q.opcoes[userResp] || "Não respondeu"} <br>
+                Correta: ${q.opcoes[correta]}
+              </p>
+              <p><em>${q.explicacao}</em></p>
+              <hr>
+            </div>
+          `;
+        });
+      });
+  </script>
+</body>
+</html>
