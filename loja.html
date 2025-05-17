@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loja - Universo Interativo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+    <script src="script2.js" defer></script>
+</head>
+<body class="inicio">
+  <!-- Menu fixo no topo -->
+  <header class="menu-topo">
+    <h1>Loja</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+      <button onclick="window.location.href='loja.html'">Loja</button>
+    </nav>
+    <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Loja Galáctica</h2>
+      <p>Gaste suas estrelas em itens incríveis para seu avatar!</p>
+   
+
+    <!-- Loja -->
+    <section class="loja-container">
+      <div class="item-loja">
+        <img src="img/chapeu.png" alt="Chapéu Espacial" />
+        <h3>Chapéu Espacial</h3>
+        <p>⭐ 50 estrelas</p>
+        <button class="btn-comprar" onclick="comprarItem('chapeu', 50)">Comprar</button>
+      </div>
+
+      <div class="item-loja">
+        <img src="img/oculos.png" alt="Óculos Cósmicos" />
+        <h3>Óculos Cósmicos</h3>
+        <p>⭐ 30 estrelas</p>
+        <button class="btn-comprar" onclick="comprarItem('oculos', 30)">Comprar</button>
+      </div>
+
+      <div class="item-loja">
+        <img src="img/fundo-galaxia.png" alt="Fundo Galáxia" />
+        <h3>Indisponivel</h3>
+        <p>⭐ 70 estrelas</p>
+        <button class="btn-comprar" onclick="comprarItem('fundo', 70)">Comprar</button>
+      </div>
+    
+
+    <!-- Inventário -->
+    <section class="inventario-section">
+      <h2>Seu Inventário</h2>
+      <div id="inventarioContainer" class="loja-container">
+        <!-- Itens comprados aparecerão aqui -->
+      </div>
+    </section>
+    </section>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Avatar no canto -->
+  <div class="user-avatar" id="userAvatar">
+    <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+  </div>
+
+  <div class="user-info-popup" id="userInfoPopup">
+    <h3>Informações do Usuário</h3>
+    <p><strong>Nome:</strong> <span></span></p>
+    <p><strong>Email:</strong> <span></span></p>
+    <button id="closePopup">Fechar</button>
+    <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+    <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+    <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+
+
+  <!-- Som de compra -->
+  <audio id="compraSom" src="sons/compra.mp3" preload="auto"></audio>
+</body>
+    </div>
+</html>

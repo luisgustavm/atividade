@@ -416,4 +416,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+// Inicializa moedas e inventário se não existirem
+if (!localStorage.getItem("moedas")) localStorage.setItem("moedas", "0");
+if (!localStorage.getItem("inventario")) localStorage.setItem("inventario", "[]");
+
+// Atualiza saldo em todos os lugares
+function atualizarSaldoTela() {
+  const moedas = parseInt(localStorage.getItem("moedas")) || 0;
+  document.querySelectorAll("#moedaSaldo").forEach(el => {
+    el.textContent = moedas;
+  });
+}
+
+// Gera 1 moeda a cada 10 segundos
+setInterval(() => {
+  let moedas = parseInt(localStorage.getItem("moedas")) || 0;
+  moedas += 1;
+  localStorage.setItem("moedas", moedas.toString());
+  atualizarSaldoTela();
+}, 10000);
+
 });

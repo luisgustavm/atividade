@@ -5,6 +5,7 @@
   <title>Conteúdo - Fundo Estrelado</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
+      <script src="script2.js" defer></script>
 </head>
 <body class="centralizado">
 
@@ -17,7 +18,9 @@
       <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
       <button onclick="window.location.href='part2.html'">Quiz</button>
       <button onclick="window.location.href='part3.html'">Feedback</button>
+      <button onclick="window.location.href='loja.html'">Loja</button>
     </nav>
+      <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
   </header>
 
   <!-- Conteúdo principal -->
@@ -53,11 +56,15 @@
   <h3>Informações do Usuário</h3>
   <p><strong>Nome:</strong> <span></span></p>
   <p><strong>Email:</strong> <span></span></p>
+  <div id="perfilMoeda">Moeda:⭐
+  <span id="moedaUsuario">0</span>
+  </div>
   <button id="closePopup">Fechar</button>
   <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
   <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
 <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
 </div>
+
 
 </body>
 </html>

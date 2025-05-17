@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mistérios Cósmicos</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+      <script src="script2.js" defer></script>
 
-  <body>
-
- <header class="menu-topo">
+<body>
+ <header class="menu-topo2">
     <h1>Mistérios Cósmicos</h1>
     <nav>
     <button onclick="window.location.href='conteudo.html'">Início</button>
@@ -17,7 +18,9 @@
       <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
       <button onclick="window.location.href='part2.html'">Quiz</button>
       <button onclick="window.location.href='part3.html'">Feedback</button>
+      <button onclick="window.location.href='loja.html'">Loja</button>
     </nav>
+      <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
   </header>
 
 <canvas id="estrelasCanvas"></canvas>
@@ -28,10 +31,30 @@
     <img src="https://cdn.eso.org/images/screen/eso2407a.jpg" class="objeto pulsar" onclick="mostrarInfo('pulsar')" />
     <img src="https://cdn.eso.org/images/screen/eso1103a.jpg" class="objeto estrela" onclick="mostrarInfo('estrela')" />
 <div class="info" id="infoBox"></div>
-  </div>
+
   <footer class="rodape2">
     <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
   </footer>
+
+<!-- Avatar no canto -->
+<div class="user-avatar" id="userAvatar">
+  <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+</div>
+
+<!-- Janela de informações -->
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+  <div id="perfilMoeda">Moeda:⭐
+  <span id="moedaUsuario">0</span>
+  </div>
+  <button id="closePopup">Fechar</button>
+  <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+  <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+<button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</div>
+
 </body>
 </head>
 
@@ -150,5 +173,4 @@ function mostrarInfo(tipo) {
 
 
   </script>
-
 </html>
