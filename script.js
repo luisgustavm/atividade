@@ -7,7 +7,7 @@ function logout() {
 document.addEventListener("DOMContentLoaded", () => {
   const path = window.location.pathname;
 
-  // Só aplica fundo animado se for login (index.html) ou cadastro
+  // Fundo animado só para index.html e cadastro.html
   if (path.includes("index.html") || path.includes("cadastro.html")) {
     // Criar estrelas animadas
     for (let i = 0; i < 120; i++) {
@@ -154,70 +154,73 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html";
     }
   }
-});
-document.addEventListener("DOMContentLoaded", () => {
+
+  // === Avatar ===
   const avatarImg = document.querySelector("#userAvatar img");
   const avatarInput = document.getElementById("avatarInput");
   const changeAvatarBtn = document.getElementById("changeAvatarBtn");
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-  // Carrega avatar salvo (se houver)
-  const avatarSalvo = localStorage.getItem(`avatar_${usuarioLogado}`);
-  if (avatarSalvo && avatarImg) {
-    avatarImg.src = avatarSalvo;
+  if (changeAvatarBtn && avatarInput && avatarImg) {
+    // Carrega avatar salvo (se houver)
+    const avatarSalvo = localStorage.getItem(`avatar_${usuarioLogado}`);
+    if (avatarSalvo) {
+      avatarImg.src = avatarSalvo;
+    }
+
+    // Clica no input ao clicar no botão
+    changeAvatarBtn.addEventListener("click", () => {
+      avatarInput.click();
+    });
+
+    // Quando o usuário escolhe uma nova imagem
+    avatarInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imageData = e.target.result;
+          avatarImg.src = imageData;
+          localStorage.setItem(`avatar_${usuarioLogado}`, imageData);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   }
 
-  // Clica no input ao clicar no botão
-  changeAvatarBtn.addEventListener("click", () => {
-    avatarInput.click();
-  });
-
-  // Quando o usuário escolhe uma nova imagem
-  avatarInput.addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const imageData = e.target.result;
-        avatarImg.src = imageData;
-        localStorage.setItem(`avatar_${usuarioLogado}`, imageData);
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-
-
-   const estrelas = document.querySelectorAll('.estrela');
-  const inputNota = document.getElementById('nota');
+  // === Sistema de estrelas para avaliação ===
+  const estrelas = document.querySelectorAll(".estrela");
+  const inputNota = document.getElementById("nota");
 
   function atualizarEstrelas(nota) {
     estrelas.forEach(estrela => {
       const valor = parseInt(estrela.dataset.valor);
-      estrela.classList.toggle('selecionada', valor <= nota);
+      estrela.classList.toggle("selecionada", valor <= nota);
     });
   }
 
-  estrelas.forEach(estrela => {
-    estrela.addEventListener('click', () => {
-      const valor = parseInt(estrela.dataset.valor);
-      inputNota.value = valor;
-      atualizarEstrelas(valor);
+  if (estrelas.length && inputNota) {
+    estrelas.forEach(estrela => {
+      estrela.addEventListener("click", () => {
+        const valor = parseInt(estrela.dataset.valor);
+        inputNota.value = valor;
+        atualizarEstrelas(valor);
+      });
+
+      estrela.addEventListener("mouseenter", () => {
+        const valor = parseInt(estrela.dataset.valor);
+        atualizarEstrelas(valor);
+      });
+
+      estrela.addEventListener("mouseleave", () => {
+        atualizarEstrelas(parseInt(inputNota.value));
+      });
     });
 
-    estrela.addEventListener('mouseenter', () => {
-      const valor = parseInt(estrela.dataset.valor);
-      atualizarEstrelas(valor);
-    });
+    atualizarEstrelas(parseInt(inputNota.value));
+  }
 
-    estrela.addEventListener('mouseleave', () => {
-      atualizarEstrelas(parseInt(inputNota.value));
-    });
-  });
-
-  atualizarEstrelas(parseInt(inputNota.value));
-});
-
-const perguntas = [
+  // === Quiz ===
+  const perguntas = [
   {
     pergunta: "Qual planeta é conhecido por seus anéis?",
     opcoes: ["Júpiter", "Saturno", "Netuno", "Marte"],
@@ -342,94 +345,75 @@ const perguntas = [
   }
 ];
 
-const quizForm = document.getElementById("quizForm");
+  const quizForm = document.getElementById("quizForm");
+  if (quizForm) {
+    perguntas.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <p><strong>${index + 1}. ${q.pergunta}</strong></p>
+        ${q.opcoes.map((op, i) => `
+          <label>
+            <input type="radio" name="q${index}" value="${i}">
+            ${op}
+          </label><br>`).join('')}
+        <hr>
+      `;
+      quizForm.appendChild(div);
+    });
+  }
 
-perguntas.forEach((q, index) => {
-  const div = document.createElement("div");
-  div.innerHTML = `
-    <p><strong>${index + 1}. ${q.pergunta}</strong></p>
-    ${q.opcoes.map((op, i) => `
-      <label>
-        <input type="radio" name="q${index}" value="${i}">
-        ${op}
-      </label><br>`).join('')}
-    <hr>
-  `;
-  quizForm.appendChild(div);
-});
+  // Função para enviar quiz (pode ser chamada no evento submit do formulário)
+  window.enviarQuiz = function () {
+    const respostasUsuario = [];
+    let todasRespondidas = true;
 
-function enviarQuiz() {
-  const respostasUsuario = [];
-  let todasRespondidas = true;
+    perguntas.forEach((q, i) => {
+      const radios = document.getElementsByName(`q${i}`);
+      let respostaSelecionada = null;
 
-  perguntas.forEach((q, i) => {
-    const radios = document.getElementsByName(`q${i}`);
-    let respostaSelecionada = null;
-
-    for (const radio of radios) {
-      if (radio.checked) {
-        respostaSelecionada = parseInt(radio.value);
-        break;
+      for (const radio of radios) {
+        if (radio.checked) {
+          respostaSelecionada = parseInt(radio.value);
+          break;
+        }
       }
+
+      if (respostaSelecionada === null) {
+        todasRespondidas = false;
+      }
+
+      respostasUsuario.push(respostaSelecionada);
+    });
+
+    if (!todasRespondidas) {
+      alert("Responda todas as perguntas antes de enviar.");
+      return;
     }
 
-    if (respostaSelecionada === null) {
-      todasRespondidas = false;
-    }
+    localStorage.setItem("respostasUsuario", JSON.stringify(respostasUsuario));
+    window.open("resultado.html", "_blank");
+  };
 
-    respostasUsuario.push(respostaSelecionada);
-  });
+  // === Feedback form ===
+  const feedbackForm = document.getElementById("feedbackForm");
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  if (!todasRespondidas) {
-    alert("Responda todas as perguntas antes de enviar.");
-    return;
-  }
+      // Mostrar mensagem de sucesso
+      const mensagemEnviada = document.getElementById("mensagem-enviada");
+      if (mensagemEnviada) {
+        mensagemEnviada.style.display = "block";
+      }
 
-  localStorage.setItem("respostasUsuario", JSON.stringify(respostasUsuario));
-  window.open("resultado.html", "_blank");
-}
-document.addEventListener("DOMContentLoaded", function () {
-  const estrelas = document.querySelectorAll(".estrela");
-  const notaInput = document.getElementById("nota");
-  let notaSelecionada = 0;
+      // Limpar formulário
+      this.reset();
 
-  estrelas.forEach((estrela, index) => {
-    estrela.addEventListener("click", () => {
-      notaSelecionada = index + 1;
-      notaInput.value = notaSelecionada;
-      atualizarEstrelas(notaSelecionada);
-    });
-  });
-
-  function atualizarEstrelas(nota) {
-    estrelas.forEach((estrela, i) => {
-      estrela.classList.toggle("selecionada", i < nota);
+      // Reset estrelas
+      if (inputNota) {
+        inputNota.value = 0;
+        atualizarEstrelas(0);
+      }
     });
   }
-
-  // Enviar formulário
-  document.getElementById("feedbackForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Aqui você pode configurar para enviar os dados
-    document.getElementById("mensagem-enviada").style.display = "block";
-
-    // Limpar o formulário
-    this.reset();
-    notaSelecionada = 0;
-    atualizarEstrelas(notaSelecionada);
-    notaInput.value = 0;
-  });
-  
-});
-document.getElementById("feedbackForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  // Mostrar mensagem
-  document.getElementById("mensagem-enviada").style.display = "block";
-
-  // Limpar o formulário
-  this.reset();
-  // ...restante do código
-  
 });
