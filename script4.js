@@ -207,5 +207,3 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Expõe a função abrirInfo para o escopo global, para uso fora do módulo
 window.abrirInfo = abrirInfo;
-
-
