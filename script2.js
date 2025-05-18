@@ -9,10 +9,8 @@ function atualizarSaldo() {
 
 // Atualiza inventário na tela
 function atualizarInventario() {
-  document.addEventListener('DOMContentLoaded', () => {
-  carregarItemEquipado();
-  atualizarSaldo();
-  atualizarInventario();
+  const inventarioDiv = document.getElementById('inventarioContainer');
+  inventarioDiv.innerHTML = '';
 
   if (inventario.length === 0) {
     inventarioDiv.innerHTML = '<p>Você não possui itens.</p>';
@@ -106,8 +104,8 @@ function atualizarInventario() {
     itemDiv.appendChild(botoesDiv);
     inventarioDiv.appendChild(itemDiv);
   });
-});
 }
+
 // Função para comprar item
 function comprarItem(nome, preco) {
   if (inventario.includes(nome)) {
