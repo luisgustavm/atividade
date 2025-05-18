@@ -18,7 +18,7 @@ function atualizarInventario() {
     inventarioDiv.innerHTML = '<p>Você não possui itens.</p>';
     return;
   }
-  });
+
   inventario.forEach(item => {
     const itemDiv = document.createElement('div');
     itemDiv.classList.add('item-inventario');
@@ -106,8 +106,8 @@ function atualizarInventario() {
     itemDiv.appendChild(botoesDiv);
     inventarioDiv.appendChild(itemDiv);
   });
+});
 }
-
 // Função para comprar item
 function comprarItem(nome, preco) {
   if (inventario.includes(nome)) {
