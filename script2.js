@@ -193,12 +193,12 @@ function carregarItemEquipado() {
   }
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  carregarItemEquipado();
+  atualizarSaldo();
+  atualizarInventario();
+});
 
-
-// Inicialização
-carregarItemEquipado();
-atualizarSaldo();
-atualizarInventario();
 
 // Ganha 1 moeda a cada 10 segundos
 setInterval(() => {
