@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sistema Solar em 3D</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script src="script2.js" defer></script>
+     <script src="script3.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
+  <style>
+    body { 
+      margin: 0;
+      background-image: url('img/planetas/estrelas.jpg');
+      overflow: hidden; 
+    }
+    #estrelasCanvas { position: fixed; top: 0; left: 0; z-index: 0; }
+    .planeta3d {
+      position: absolute;
+      width: 8vw;
+      height: 8vw;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+    <canvas id="estrelasCanvas"></canvas>
+   <header class="menu-topo3">
+    <h1>Sistema Solar em 3D</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part4.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+      <button onclick="window.location.href='loja.html'">Loja</button>
+    </nav>
+       <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
+   </header>
+   
+
+<main>
+  <div id="sistema-solar">
+    <div id="sol3d" class="planeta3d" style="top: 50%; left: 5%; width: 30vw; height: 30vw;"></div>
+    <div id="mercurio3d" class="planeta3d" style="top: 50%; left: 22%; width: 10vw; height: 4vw;"></div>
+    <div id="venus3d" class="planeta3d" style="top: 50%; left: 28%; width: 10vw; height: 5vw;"></div>
+    <div id="terra3d" class="planeta3d" style="top: 50%; left: 35%; width: 10vw; height: 5.5vw;"></div>
+    <div id="marte3d" class="planeta3d" style="top: 50%; left: 42%; width: 10vw; height: 4.5vw;"></div>
+    <div id="jupiter3d" class="planeta3d" style="top: 50%; left: 51%; width: 10vw; height: 11vw;"></div>
+    <div id="saturno3d" class="planeta3d" style="top: 50%; left: 68%; width: 30vw; height: 10vw;"></div>
+    <div id="urano3d" class="planeta3d" style="top: 50%; left: 83%; width: 10vw; height: 7vw;"></div>
+    <div id="netuno3d" class="planeta3d" style="top: 50%; left: 93%; width: 10vw; height: 7vw;"></div>
+  </div>
+ <footer class="rodape2">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+    </main>
+
+
+ <div class="user-avatar" id="userAvatar">
+    <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+  </div>
+
+  <div class="user-info-popup" id="userInfoPopup">
+    <h3>Informações do Usuário</h3>
+    <p><strong>Nome:</strong> <span></span></p>
+    <p><strong>Email:</strong> <span></span></p>
+    <button id="closePopup">Fechar</button>
+    <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+    <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+    <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</body>
+
+  <script>
+ function abrirInfo(planetaNome) {
+  // Mapeia nome do planeta para número do arquivo
+  const mapaPlanetas = {
+    mercurio: 1,
+    venus: 2,
+    terra: 3,
+    marte: 4,
+    jupiter: 5,
+    saturno: 6,
+    urano: 7,
+    netuno: 8,
+    sol: 0  // se quiser ignorar ou redirecionar para algum lugar
+  };
+
+  const numeroPlaneta = mapaPlanetas[planetaNome];
+
+  if (numeroPlaneta) {
+    window.location.href = `planeta${numeroPlaneta}.html`;
+  } else {
+    console.log('Planeta inválido ou sem página');
+  }
+}
+
+
+
+    (function(){
+      const canvas = document.getElementById('estrelasCanvas');
+      const ctx = canvas.getContext('2d');
+      let estrelas = [];
+      const numEstrelas = 150;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function criaEstrelas() {
+        estrelas = [];
+        for (let i = 0; i < numEstrelas; i++) {
+          estrelas.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 1.5,
+            alpha: Math.random(),
+            delta: Math.random() * 0.02
+          });
+        }
+      }
+
+      function animaEstrelas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let estrela of estrelas) {
+          ctx.beginPath();
+          ctx.arc(estrela.x, estrela.y, estrela.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = `rgba(255, 255, 255, ${estrela.alpha})`;
+          ctx.fill();
+          estrela.alpha += estrela.delta;
+          if (estrela.alpha <= 0 || estrela.alpha >= 1) estrela.delta = -estrela.delta;
+        }
+        requestAnimationFrame(animaEstrelas);
+      }
+
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        criaEstrelas();
+      });
+
+      resizeCanvas();
+      criaEstrelas();
+      animaEstrelas();
+    })();
+
+    function criarPlaneta(id, texturaURL, planetaNome) {
+      const container = document.getElementById(id);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.shadowMap.enabled = true;
+      container.appendChild(renderer.domElement);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+      scene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 3, 5);
+      directionalLight.castShadow = true;
+      directionalLight.shadow.mapSize.width = 1024;
+      directionalLight.shadow.mapSize.height = 1024;
+      scene.add(directionalLight);
+
+      const texture = new THREE.TextureLoader().load(texturaURL);
+      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+      const isSol = planetaNome === 'sol';
+      const material = isSol
+        ? new THREE.MeshStandardMaterial({
+            map: texture,
+            emissive: new THREE.Color(0xffff33),
+            emissiveIntensity: 1,
+            metalness: 0.3,
+            roughness: 0.5
+          })
+        : new THREE.MeshStandardMaterial({
+            map: texture,
+            color: 0xffffff, // branco pra não apagar a textura
+            metalness: 0.5,
+            roughness: 0.2,
+            emissive: new THREE.Color(0x222222),
+            emissiveIntensity: 0.3
+          });
+
+      const sphere = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 64), material);
+      sphere.castShadow = !isSol;
+      sphere.receiveShadow = true;
+      scene.add(sphere);
+
+      // Variável para o anel, usada só em Saturno
+      let ring = null;
+
+      if (planetaNome === 'terra') {
+         const grupoLua = new THREE.Group();
+          const texturaLua = new THREE.TextureLoader().load('img/planetas/Lua.jpg'); // coloque a textura da lua nessa pasta
+  const materialLua = new THREE.MeshStandardMaterial({ map: texturaLua });
+  const lua = new THREE.Mesh(new THREE.SphereGeometry(0.27, 32, 32), materialLua); // lua menor que a Terra
+        const textureNuvens = new THREE.TextureLoader().load('img/planetas/Nuvens.jpg');
+        const atmosphereMaterial = new THREE.MeshPhongMaterial({
+          map: textureNuvens,
+          transparent: true,
+          opacity: 0.3,
+          depthWrite: false
+        });
+
+        const atmosphere = new THREE.Mesh(
+          new THREE.SphereGeometry(1.07, 64, 64),
+          atmosphereMaterial
+        );
+
+        lua.position.set(1.4, 0, 0); 
+         grupoLua.add(lua);
+          sphere.add(grupoLua);
+
+        sphere.add(atmosphere);
+
+         function animate() {
+    requestAnimationFrame(animate);
+
+    anguloLuz += 0.002;
+    tempo += 0.002;
+
+    directionalLight.position.set(
+      Math.sin(anguloLuz) * 5,
+      3,
+      Math.cos(anguloLuz) * 5
+    );
+
+    sphere.rotation.y += 0.0005;
+    sphere.position.y = Math.sin(tempo) * 0.05;
+
+    if (ring) ring.rotation.z += 0.0005;
+
+    // Girar o grupo da lua para simular órbita
+    grupoLua.rotation.y += 0.01;  // controle a velocidade da órbita aqui
+
+    renderer.render(scene, camera);
+  }
+      }
+      if (planetaNome === 'venus') {
+        const textureNuvens = new THREE.TextureLoader().load('img/planetas/atmosferavenus.jpg');
+        const atmosphereMaterial = new THREE.MeshPhongMaterial({
+          map: textureNuvens,
+          transparent: true,
+          opacity: 0.4,
+          depthWrite: false
+        });
+
+        const atmosphere = new THREE.Mesh(
+          new THREE.SphereGeometry(1.07, 64, 64),
+          atmosphereMaterial
+        );
+
+        sphere.add(atmosphere);
+      }
+
+     if (planetaNome === 'saturno') {
+    const ringGeometry = new THREE.RingGeometry(1.2, 2, 128);
+    const ringTexture = new THREE.TextureLoader().load('img/planetas/anel.png');
+
+    // Corrige UV
+    const uv = ringGeometry.attributes.uv;
+    for (let i = 0; i < uv.count; i++) {
+      uv.setY(i, 1 - uv.getY(i));
+    }
+
+    const ringMaterial = new THREE.MeshBasicMaterial({
+      map: ringTexture,
+      transparent: true,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+      opacity: 0.5
+    });
+
+    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+    ring.rotation.x = THREE.MathUtils.degToRad(96);
+    sphere.add(ring);
+  }
+      camera.position.z = 3;
+
+      container.addEventListener('click', () => abrirInfo(planetaNome));
+
+      // Variável para controlar o ângulo da luz
+      let anguloLuz = 0;
+
+      // Variável para o tempo do "bamboleio"
+      let tempo = 0;
+
+     function animate() {
+  requestAnimationFrame(animate);
+
+  anguloLuz += 0.002;  // antes 0.01
+  tempo += 0.002;      // antes 0.01
+
+  directionalLight.position.set(
+    Math.sin(anguloLuz) * 5,
+    3,
+    Math.cos(anguloLuz) * 5
+  );
+
+  sphere.rotation.y += 0.0005;  // antes 0.0005
+
+  sphere.position.y = Math.sin(tempo) * 0.05;
+
+  if (ring) {
+    ring.rotation.z += 0.0005;
+  }
+
+  renderer.render(scene, camera);
+}
+
+      animate();
+
+      window.addEventListener('resize', () => {
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+      });
+    }
+
+    criarPlaneta('mercurio3d', 'img/planetas/mercurio.jpg', 'mercurio');
+    criarPlaneta('venus3d', 'img/planetas/venus.jpg', 'venus');
+    criarPlaneta('terra3d', 'img/planetas/terra.jpg', 'terra');
+    criarPlaneta('marte3d', 'img/planetas/marte.jpg', 'marte');
+    criarPlaneta('jupiter3d', 'img/planetas/jupiter.jpg', 'jupiter');
+    criarPlaneta('saturno3d', 'img/planetas/saturno.jpg', 'saturno');
+    criarPlaneta('urano3d', 'img/planetas/urano.jpg', 'urano');
+    criarPlaneta('netuno3d', 'img/planetas/netuno.jpg', 'netuno');
+    criarPlaneta('sol3d', 'img/planetas/sol.jpg', 'sol');
+  </script>
+</body>
+</html>

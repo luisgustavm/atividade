@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dois Cards Centralizados</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script src="script2.js" defer></script>
+     <script src="script3.js" defer></script>
+  <style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      background: #0b0b0b;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrapper {
+      height: 100%;
+      display: flex;
+      justify-content: center; /* Alinha horizontalmente */
+      align-items: center;     /* Alinha verticalmente */
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 40px; /* Espaço entre os cards */
+    }
+
+    .card {
+      width: 220px;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.377);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+      text-align: center;
+      color: white;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .card button {
+      background-color: #00aaff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+    
+ <canvas id="estrelasCanvas"></canvas>
+
+<main>
+     <header class="menu-topo3">
+    <h1>Planetas</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part4.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+      <button onclick="window.location.href='loja.html'">Loja</button>
+    </nav>
+       <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
+   </header>
+   <footer class="rodape2">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+  </footer>
+</main>
+<div class="user-avatar" id="userAvatar">
+    <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+  </div>
+
+  <div class="user-info-popup" id="userInfoPopup">
+    <h3>Informações do Usuário</h3>
+    <p><strong>Nome:</strong> <span></span></p>
+    <p><strong>Email:</strong> <span></span></p>
+    <button id="closePopup">Fechar</button>
+    <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+    <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+    <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+  </div>
+  
+   <div class="wrapper">
+    <div class="cards-container">
+      <div class="card">
+        <h2>Mapa</h2>
+        <p>Acessar mapa interativo</p>
+        <button onclick="window.location.href='mapa.html'">Acessar</button>
+      </div>
+
+      <div class="card">
+        <h2>Cards</h2>
+        <p>Acessar cards de informações</p>
+        <button onclick="window.location.href='part1.html'">Acessar</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

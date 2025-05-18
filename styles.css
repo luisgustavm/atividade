@@ -10,12 +10,6 @@ body {
 }
 
 
-body.tela-login {
-  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa') no-repeat center center fixed;
-  background-size: cover;
-  animation: moveBackground 30s linear infinite;
-}
-
 @keyframes moveBackground {
   0% {
     background-position: center center;
@@ -522,7 +516,7 @@ main {
     margin-top: 10px;
   flex: 1;
 }
-body.inicio {
+body.fundo-galaxia {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -534,7 +528,7 @@ body.inicio {
 }
 
 /* Camada de fundo fixa e transparente */
-body.inicio::before {
+.fundo-galaxia::before {
   content: "";
   position: fixed; /* <- fixo na tela */
   top: 0;
@@ -548,6 +542,11 @@ body.inicio::before {
   pointer-events: none; /* garante que o fundo não interfira nos cliques */
 }
 
+
+body.fundo-espaco {
+  background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa') no-repeat center center fixed;
+  background-size: cover;
+}
 
 .btn-saiba-mais {
   margin-top: 10px;
@@ -669,21 +668,21 @@ button[type="submit"]:hover {
 
 
 .rodape2 {
-  position: fixed;           /* fixa o rodapé na parte inferior da janela */
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);  /* fundo semitransparente escuro */
-  color: #fff;
   text-align: center;
-  font-size: 1em;
-  padding: 12px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(6px);
-  z-index: 30;               /* acima das imagens e infoBox */
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  font-size: 1.2em;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 0; /* removemos o arredondamento para encaixar na tela */
+  z-index: 1000;
 }
+
 
 #estrelasCanvas {
   position: fixed;
