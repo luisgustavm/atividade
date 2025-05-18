@@ -9,14 +9,16 @@ function atualizarSaldo() {
 
 // Atualiza inventário na tela
 function atualizarInventario() {
-  const inventarioDiv = document.getElementById('inventarioContainer');
-  inventarioDiv.innerHTML = '';
+  document.addEventListener('DOMContentLoaded', () => {
+  carregarItemEquipado();
+  atualizarSaldo();
+  atualizarInventario();
 
   if (inventario.length === 0) {
     inventarioDiv.innerHTML = '<p>Você não possui itens.</p>';
     return;
   }
-
+  });
   inventario.forEach(item => {
     const itemDiv = document.createElement('div');
     itemDiv.classList.add('item-inventario');

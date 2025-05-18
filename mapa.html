@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Sistema Solar em 3D</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
   <script src="script2.js" defer></script>
      <script src="script3.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/20.0.0/tween.umd.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     body { 
       margin: 0;
@@ -28,6 +25,8 @@
   </style>
 </head>
 <body>
+ 
+
     <canvas id="estrelasCanvas"></canvas>
    <header class="menu-topo3">
     <h1>Sistema Solar em 3D</h1>
@@ -75,7 +74,9 @@
     <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
 </body>
 
-  <script>
+   <script type="module">
+ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.module.js';
+
  function abrirInfo(planetaNome) {
   // Mapeia nome do planeta para número do arquivo
   const mapaPlanetas = {
