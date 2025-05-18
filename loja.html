@@ -5,12 +5,12 @@
   <title>Loja - Universo Interativo</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
-    <script src="script2.js" defer></script>
-     <script src="script3.js" defer></script>
-
+  <script src="script2.js" defer></script>
+  <script src="script3.js" defer></script>
 </head>
 <body>
   <canvas id="estrelasCanvas"></canvas>
+
   <!-- Menu fixo no topo -->
   <header class="menu-topo">
     <h1>Loja</h1>
@@ -26,10 +26,11 @@
   </header>
 
   <main>
+    <!-- Seção de destaque -->
     <section class="hero">
       <h2>Loja Galáctica</h2>
       <p>Gaste suas estrelas em itens incríveis para seu avatar!</p>
-   
+    
 
     <!-- Loja -->
     <section class="loja-container">
@@ -53,22 +54,22 @@
         <p>⭐ 70 estrelas</p>
         <button class="btn-comprar" onclick="comprarItem('fundo', 70)">Comprar</button>
       </div>
-      
+
       <div class="item-loja">
         <img src="img/fundo-espaco.png" alt="Fundo Espaço" />
         <h3>Fundo Espaço</h3>
         <p>⭐ 60 estrelas</p>
         <button class="btn-comprar" onclick="comprarItem('fundo1', 60)">Comprar</button>
       </div>
+      </section>
     
 
     <!-- Inventário -->
     <section class="inventario-section">
       <h2>Seu Inventário</h2>
-      <div id="inventarioContainer" class="loja-container">
+      <div id="inventario" class="loja-container">
         <!-- Itens comprados aparecerão aqui -->
       </div>
-    </section>
     </section>
     </section>
   </main>
@@ -90,10 +91,6 @@
     <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
     <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
     <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
-
-
-  <!-- Som de compra -->
-  <audio id="compraSom" src="sons/compra.mp3" preload="auto"></audio>
+  </div>
 </body>
-    </div>
 </html>

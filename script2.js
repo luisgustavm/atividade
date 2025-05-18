@@ -9,9 +9,10 @@ function atualizarSaldo() {
 
 // Atualiza inventário na tela
 function atualizarInventario() {
-  const inventarioDiv = document.getElementById('inventarioContainer');
-  inventarioDiv.innerHTML = '';
+  const inventarioDiv = document.getElementById('inventario');
+  if (!inventarioDiv) return; // evita erro em páginas que não tem inventario
 
+  inventarioDiv.innerHTML = ''; // Limpa o inventário atual
   if (inventario.length === 0) {
     inventarioDiv.innerHTML = '<p>Você não possui itens.</p>';
     return;
