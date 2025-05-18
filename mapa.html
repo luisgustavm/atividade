@@ -10,7 +10,7 @@
   <style>
     body { 
       margin: 0;
-      background-image: url('img/planetas/estrelas.jpg');
+      background-image: url('img/estrelas.jpg');
       overflow: hidden; 
     }
     #estrelasCanvas { position: fixed; top: 0; left: 0; z-index: 0; }
@@ -202,7 +202,7 @@
           const texturaLua = new THREE.TextureLoader().load('img/planetas/Lua.jpg'); // coloque a textura da lua nessa pasta
   const materialLua = new THREE.MeshStandardMaterial({ map: texturaLua });
   const lua = new THREE.Mesh(new THREE.SphereGeometry(0.27, 32, 32), materialLua); // lua menor que a Terra
-        const textureNuvens = new THREE.TextureLoader().load('img/planetas/Nuvens.jpg');
+        const textureNuvens = new THREE.TextureLoader().load('img/Nuvens.jpg');
         const atmosphereMaterial = new THREE.MeshPhongMaterial({
           map: textureNuvens,
           transparent: true,
@@ -245,7 +245,7 @@
   }
       }
       if (planetaNome === 'venus') {
-        const textureNuvens = new THREE.TextureLoader().load('img/planetas/atmosferavenus.jpg');
+        const textureNuvens = new THREE.TextureLoader().load('img/atmosferavenus.jpg');
         const atmosphereMaterial = new THREE.MeshPhongMaterial({
           map: textureNuvens,
           transparent: true,
@@ -263,7 +263,7 @@
 
      if (planetaNome === 'saturno') {
     const ringGeometry = new THREE.RingGeometry(1.2, 2, 128);
-    const ringTexture = new THREE.TextureLoader().load('img/planetas/anel.png');
+    const ringTexture = new THREE.TextureLoader().load('img/anel.png');
 
     // Corrige UV
     const uv = ringGeometry.attributes.uv;
