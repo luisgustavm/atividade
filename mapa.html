@@ -199,7 +199,7 @@
 
       if (planetaNome === 'terra') {
          const grupoLua = new THREE.Group();
-          const texturaLua = new THREE.TextureLoader().load('img/planetas/Lua.jpg'); // coloque a textura da lua nessa pasta
+          const texturaLua = new THREE.TextureLoader().load('planetas/Lua.jpg'); // coloque a textura da lua nessa pasta
   const materialLua = new THREE.MeshStandardMaterial({ map: texturaLua });
   const lua = new THREE.Mesh(new THREE.SphereGeometry(0.27, 32, 32), materialLua); // lua menor que a Terra
         const textureNuvens = new THREE.TextureLoader().load('img/Nuvens.jpg');
@@ -325,15 +325,15 @@
       });
     }
 
-    criarPlaneta('mercurio3d', 'img/planetas/Mercurio.jpg', 'mercurio');
-    criarPlaneta('venus3d', 'img/planetas/Venus.jpg', 'venus');
-    criarPlaneta('terra3d', 'img/planetas/Terra.jpg', 'terra');
-    criarPlaneta('marte3d', 'img/planetas/Marte.jpg', 'marte');
-    criarPlaneta('jupiter3d', 'img/planetas/Jupiter.jpg', 'jupiter');
-    criarPlaneta('saturno3d', 'img/planetas/Saturno.jpg', 'saturno');
-    criarPlaneta('urano3d', 'img/planetas/Urano.jpg', 'urano');
-    criarPlaneta('netuno3d', 'img/planetas/Netuno.jpg', 'netuno');
-    criarPlaneta('sol3d', 'img/planetas/Sol.jpg', 'sol');
+    criarPlaneta('mercurio3d', 'planetas/Mercurio.jpg', 'mercurio');
+    criarPlaneta('venus3d', 'planetas/Venus.jpg', 'venus');
+    criarPlaneta('terra3d', 'planetas/Terra.jpg', 'terra');
+    criarPlaneta('marte3d', 'planetas/Marte.jpg', 'marte');
+    criarPlaneta('jupiter3d', 'planetas/Jupiter.jpg', 'jupiter');
+    criarPlaneta('saturno3d', 'planetas/Saturno.jpg', 'saturno');
+    criarPlaneta('urano3d', 'planetas/Urano.jpg', 'urano');
+    criarPlaneta('netuno3d', 'planetas/Netuno.jpg', 'netuno');
+    criarPlaneta('sol3d', 'planetas/Sol.jpg', 'sol');
   </script>
 </body>
 </html>
