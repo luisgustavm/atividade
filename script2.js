@@ -178,7 +178,7 @@ function equiparNoAvatar(item) {
 function carregarItemEquipado() {
   
   const nomePagina = window.location.pathname.split('/').pop();
-  const paginasSemFundo = ['mapa.html']; // coloque aqui as páginas onde NÃO quer fundo
+  const paginasSemFundo = ['mapa.html', 'telaanimada.html']; // coloque aqui as páginas onde NÃO quer fundo
 
   const fundoItem = localStorage.getItem('fundoEquipado');
   const itensAvatar = JSON.parse(localStorage.getItem('itensAvatarEquipados')) || {};
