@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Esqueci a Senha</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h2>Recuperar Senha</h2>
+
+<div class="login-container">
+  <div id="etapa1">
+    <label for="emailInput">Digite seu e-mail cadastrado:</label>
+    <input type="email" id="emailInput" required />
+    <button id="btnEnviarCodigo">Enviar Código</button>
+    <button id="btnVoltarLogin">Voltar</button>
+  </div>
+
+  <!-- Etapa 2: Validar código e trocar senha -->
+  <div id="etapa2" class="hidden">
+    <label for="codigoInput">Digite o código de 6 dígitos:</label>
+    <input type="text" id="codigoInput" maxlength="6" pattern="[0-9]{6}" required />
+    
+    <label for="novaSenhaInput">Nova senha:</label>
+    <input type="password" id="novaSenhaInput" required />
+
+    <label for="confirmaSenhaInput">Confirme a nova senha:</label>
+    <input type="password" id="confirmaSenhaInput" required />
+
+    <button id="btnTrocarSenha">Trocar Senha</button>
+  </div>
+</div>
+
+  <p id="msgErro" style="color: red;"></p>
+  <p id="msgSucesso" style="color: green;"></p>
+
+  <script src="script6.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

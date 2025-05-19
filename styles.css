@@ -990,6 +990,7 @@ canvas {
 }
 #startScreen {
   display: flex;
+ background-image: url('img/estrelas.jpg');
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -997,7 +998,9 @@ canvas {
   text-align: center;
   overflow: hidden;
 }
-
+#formLogin {
+  text-align: center;
+}
 
 #startScreen h2 {
   font-size: 2rem;

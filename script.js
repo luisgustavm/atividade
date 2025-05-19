@@ -1,3 +1,4 @@
+
 // Função para logout (deve ficar fora do DOMContentLoaded para ser acessível de fora)
 function logout() {
   localStorage.removeItem("usuarioLogado");
@@ -6,7 +7,10 @@ function logout() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const path = window.location.pathname;
-
+  const btnEsqueciSenha = document.getElementById('btnEsqueciSenha');
+  if (btnEsqueciSenha) {
+    btnEsqueciSenha.addEventListener('click', mostrarTelaEsqueciSenha);
+  }
   // Fundo animado só para index.html e cadastro.html
   if (path.includes("index.html") || path.includes("cadastro.html")) {
     // Criar estrelas animadas
