@@ -33,6 +33,18 @@ function atualizarInventario() {
         img.src = 'img/oculos.png';
         img.alt = 'Óculos';
         break;
+         case 'aneis':
+        img.src = 'img/aneis.png';
+        img.alt = 'Anel';
+        break;
+        case 'bone':
+        img.src = 'img/bone.png';
+        img.alt = 'Boné';
+        break;
+         case 'estrela':
+        img.src = 'img/estrela.png';
+        img.alt = 'Estrela';
+        break;
       case 'fundo':
         img.src = 'img/fundo-galaxia.png';
         img.alt = 'Fundo Buraco Negro';
@@ -40,6 +52,10 @@ function atualizarInventario() {
       case 'fundo1':
         img.src = 'img/fundo-espaco.png';
         img.alt = 'Fundo Espaço';
+        break;
+         case 'fundo2':
+        img.src = 'img/fundo-sol.png';
+        img.alt = 'Fundo Sol';
         break;
       default:
         img.src = 'img/default.png';
@@ -53,8 +69,12 @@ function atualizarInventario() {
     nome.textContent = ({
       chapeu: 'Chapéu Espacial',
       oculos: 'Óculos',
+      bone: 'Boné',
+      estrela: 'Estrela',
+      aneis: 'Anel',
       fundo: 'Fundo Buraco Negro',
-      fundo1: 'Fundo Espaço'
+      fundo1: 'Fundo Espaço',
+       fundo2: 'Fundo Sol'
     })[item] || item;
 
     const botaoEquipar = document.createElement('button');
@@ -63,7 +83,7 @@ function atualizarInventario() {
       alert(`Você equipou: ${nome.textContent}`);
       const userAvatar = document.getElementById('userAvatar');
 
-      if (item === 'fundo' || item === 'fundo1') {
+      if (item === 'fundo' || item === 'fundo1' || item === 'fundo2') {
         localStorage.setItem('fundoEquipado', item);
         aplicarFundo(item);
       } else {
@@ -75,7 +95,7 @@ function atualizarInventario() {
     const botaoDesequipar = document.createElement('button');
     botaoDesequipar.textContent = 'Desequipar';
     botaoDesequipar.onclick = () => {
-  if (item === 'fundo' || item === 'fundo1') {
+  if (item === 'fundo' || item === 'fundo1'|| item === 'fundo2') {
     localStorage.removeItem('fundoEquipado');
     aplicarFundo(null);
   } else {
@@ -135,12 +155,14 @@ function comprarItem(nome, preco) {
 
 // Aplica fundo na tela
 function aplicarFundo(item) {
-  document.body.classList.remove('fundo-galaxia', 'fundo-espaco');
+  document.body.classList.remove('fundo-galaxia', 'fundo-sol', 'fundo-espaco');
 
   if (item === 'fundo') {
     document.body.classList.add('fundo-galaxia');
   } else if (item === 'fundo1') {
     document.body.classList.add('fundo-espaco');
+  } else if (item === 'fundo2') {
+    document.body.classList.add('fundo-sol');
   }
 }
 
@@ -159,6 +181,15 @@ function equiparNoAvatar(item) {
       break;
     case 'oculos':
       imgEquipado.src = 'img/oculos.png';
+      break;
+      case 'bone':
+      imgEquipado.src = 'img/bone.png';
+      break;
+      case 'estrela':
+      imgEquipado.src = 'img/estrela.png';
+      break;
+      case 'aneis':
+      imgEquipado.src = 'img/aneis.png';
       break;
     default:
       return;

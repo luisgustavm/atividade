@@ -526,6 +526,16 @@ body.fundo-galaxia {
   z-index: 0;
   overflow-x: hidden;
 }
+body.fundo-sol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  z-index: 0;
+  overflow-x: hidden;
+}
 
 /* Camada de fundo fixa e transparente */
 .fundo-galaxia::before {
@@ -538,6 +548,19 @@ body.fundo-galaxia {
   background: url('https://s2.glbimg.com/xwML9IO0IQBvHWc5zgIlaMVG9As=/smart/e.glbimg.com/og/ed/f/original/2019/09/27/bh_accretiondisk_sim_stationary_websize.gif') no-repeat center center;
   background-size: cover;
   opacity: 0.5; /* controla a transparência */
+  z-index: -1;   /* mantém atrás do conteúdo */
+  pointer-events: none; /* garante que o fundo não interfira nos cliques */
+}
+.fundo-sol::before {
+  content: "";
+  position: fixed; /* <- fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://i.gifer.com/origin/ea/eaf933959d3986c6aac35647c7cb9e74_w200.gif') no-repeat center center;
+  background-size: cover;
+  opacity: 0.4; /* controla a transparência */
   z-index: -1;   /* mantém atrás do conteúdo */
   pointer-events: none; /* garante que o fundo não interfira nos cliques */
 }
@@ -891,7 +914,22 @@ button[type="submit"]:hover {
   z-index: 2;
   pointer-events: none;
 }
-
+.item-equipado.bone {
+  position: absolute;
+  top: -14px;
+  left: 36%;
+  width: 56px;
+  height: 40px;
+  transform: translateX(-50%) scale(1.3);
+}
+.item-equipado.aneis {
+  position: absolute;
+  top: -13px;
+  left: 55%;
+  width: 70px;
+  height: 80px;
+  transform: translateX(-50%) scale(1.3);
+}
 
 .item-equipado.oculos {
   position: absolute;
@@ -899,6 +937,14 @@ button[type="submit"]:hover {
   left: 50%;
   width: 41px;
   height: 40px;
+  transform: translateX(-50%) scale(1.3);
+}
+.item-equipado.estrela {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  width: 117px;
+  height: 117px;
   transform: translateX(-50%) scale(1.3);
 }
 
