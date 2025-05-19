@@ -3,39 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <title>Esqueci a Senha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .login-container {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 320px;
+      max-width: 90%;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    input[type="email"],
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 6px;
+      border: 1.8px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="email"]:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    /* Espaçamento maior entre os inputs da etapa 2 */
+    #etapa2 label {
+      margin-top: 25px;
+    }
+
+    /* Centralizar os botões e ajustar espaçamento */
+    #etapa1,
+    #etapa2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 180px;
+      padding: 10px 0;
+      font-size: 1rem;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Segundo botão com cor diferente e margem menor */
+    button + button {
+      margin-top: 10px;
+      background-color: #6c757d;
+    }
+
+    button + button:hover {
+      background-color: #545b62;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #msgErro, #msgSucesso {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <h2>Recuperar Senha</h2>
 
-<div class="login-container">
-  <div id="etapa1">
-    <label for="emailInput">Digite seu e-mail cadastrado:</label>
-    <input type="email" id="emailInput" required />
-    <button id="btnEnviarCodigo">Enviar Código</button>
-    <button id="btnVoltarLogin">Voltar</button>
+  <div class="login-container">
+    <div id="etapa1">
+      <label for="emailInput">Digite seu e-mail cadastrado:</label>
+      <input type="email" id="emailInput" required />
+      <button id="btnEnviarCodigo">Enviar Código</button>
+      <button id="btnVoltarLogin">Voltar</button>
+    </div>
+
+    <!-- Etapa 2: Validar código e trocar senha -->
+    <div id="etapa2" class="hidden">
+      <label for="codigoInput">Digite o código de 6 dígitos:</label>
+      <input type="text" id="codigoInput" maxlength="6" pattern="[0-9]{6}" required />
+      
+      <label for="novaSenhaInput">Nova senha:</label>
+      <input type="password" id="novaSenhaInput" required />
+
+      <label for="confirmaSenhaInput">Confirme a nova senha:</label>
+      <input type="password" id="confirmaSenhaInput" required />
+
+      <button id="btnTrocarSenha">Trocar Senha</button>
+    </div>
   </div>
-
-  <!-- Etapa 2: Validar código e trocar senha -->
-  <div id="etapa2" class="hidden">
-    <label for="codigoInput">Digite o código de 6 dígitos:</label>
-    <input type="text" id="codigoInput" maxlength="6" pattern="[0-9]{6}" required />
-    
-    <label for="novaSenhaInput">Nova senha:</label>
-    <input type="password" id="novaSenhaInput" required />
-
-    <label for="confirmaSenhaInput">Confirme a nova senha:</label>
-    <input type="password" id="confirmaSenhaInput" required />
-
-    <button id="btnTrocarSenha">Trocar Senha</button>
-  </div>
-</div>
 
   <p id="msgErro" style="color: red;"></p>
   <p id="msgSucesso" style="color: green;"></p>
 
   <script src="script6.js"></script>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
