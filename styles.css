@@ -181,7 +181,6 @@ body.centralizado {
   margin-top: 80px; /* ou 100px, caso precise mais espaço */
   display: flex;
 }
-
 .menu-topo {
   position: fixed;
   top: 0;
@@ -191,7 +190,7 @@ body.centralizado {
   padding: 10px 80px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-  max-width: 900px;
+  max-width: 1100px;
   width: 95%;
   display: flex;
   align-items: center;
@@ -199,58 +198,41 @@ body.centralizado {
   z-index: 9999;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
+  /* altura fixa do menu */
+  overflow: visible;
 }
-.menu-topo2 {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 80px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-      max-width: 1000px;
-      width: 95%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 9999;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
+
+.menu-topo nav {
+  display: flex;
+  gap: 15px;
+
+  max-width: calc((100px + 15px) * 6 - 15px); /* mostra 5 botões */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 8px; /* espaçamento pra baixar a barra de rolagem */
+  scrollbar-width: thin; /* Firefox barra fina */
+  scrollbar-color: black transparent; /* thumb preta, fundo transparente */
 }
-.menu-topo3 {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 80px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-      max-width: 1050px;
-      width: 95%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 9999;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
+
+/* Chrome, Edge, Safari - barra preta e escondida */
+.menu-topo nav::-webkit-scrollbar {
+  height: 6px;  /* altura da barra */
+  background: transparent; /* fundo transparente */
 }
+
+.menu-topo nav::-webkit-scrollbar-thumb {
+  background-color: black; /* thumb preta */
+  border-radius: 3px;
+}
+
+/* Deixa a track transparente e bem "escondida" */
+.menu-topo nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 
 .menu-topo h1 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.5rem;
-  user-select: none;
-}
-
-.menu-topo2 h1 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.5rem;
-  user-select: none;
-}
-.menu-topo3 h1 {
   margin: 0;
   font-weight: 700;
   font-size: 1.5rem;
@@ -262,38 +244,8 @@ body.centralizado {
   display: flex;
   gap: 15px;
 }
-.menu-topo2 nav {
-  display: flex;
-  gap: 15px;
-}
-.menu-topo3 nav {
-  display: flex;
-  gap: 15px;
-}
 
 .menu-topo button {
-  background-color: #1c1c88;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-}
-.menu-topo2 button {
-  background-color: #1c1c88;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-}
-.menu-topo3 button {
   background-color: #1c1c88;
   border: none;
   color: white;
@@ -970,4 +922,99 @@ button[type="submit"]:hover {
 
 .btn-comprar:hover {
   background-color: #0b29d1;
+}
+
+.body2 {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+}
+
+canvas {
+  display: block;
+}
+
+#pontos {
+  color: white;
+  font-size: 24px;
+  left: 20px;
+  top: 20px;
+  font-family: monospace;
+}
+
+/* Modal de Game Over */
+#gameOverModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+#gameOverContent {
+  background: #111;
+  padding: 30px;
+  text-align: center;
+  border-radius: 8px;
+  color: white;
+  font-family: sans-serif;
+  width: 300px;
+}
+
+#gameOverContent h2 {
+  margin-top: 0;
+}
+
+#gameOverContent button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#btnRestart {
+  background: #28a745;
+  color: white;
+}
+
+#btnOther {
+  background: #007bff;
+  color: white;
+}
+#startScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+#startScreen h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#startScreen p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+#startScreen button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1c1c88;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

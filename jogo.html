@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Nave com Planetas 3D</title>
+  <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+        <script src="script2.js"></script>
+</head>
+<body class="body2">
+  <canvas id="estrelasCanvas"></canvas>
+
+  <header class="menu-topo">
+    <h1>Jogo</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part4.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+    <button onclick="window.location.href='jogo.html'">jogo</button>
+      <button onclick="window.location.href='loja.html'">Loja</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+
+    </nav>
+    <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
+    <div id="pontos">Pontos: 0</div>
+    </header>
+    <div id="startScreen">
+    <h2>Bem-vindo ao Jogo da Nave</h2>
+    <p>Maior Pontuação: <span id="recorde">0</span></p>
+    <button id="btnStart">Iniciar Jogo</button>
+    </div>
+
+  <main>
+    <div class="user-avatar" id="userAvatar">
+      <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+    </div>
+
+    <div class="user-info-popup" id="userInfoPopup">
+      <h3>Informações do Usuário</h3>
+      <p><strong>Nome:</strong> <span></span></p>
+      <p><strong>Email:</strong> <span></span></p>
+      <button id="closePopup">Fechar</button>
+      <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+      <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+      <button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+    </div>
+
+    <!-- HUD e Jogo -->
+
+    <canvas id="game"></canvas>
+
+   <!-- Modal Game Over -->
+  <div id="gameOverModal">
+    <div id="gameOverContent">
+      <h2>Game Over</h2>
+      <p>Sua pontuação: <span id="finalScore">0</span></p>
+      <p>Maior pontuação: <span id="highScore">0</span></p>
+      <button id="btnRestart">Reiniciar</button>
+      <button id="btnOther">Menu Jogo</button>
+    </div>
+  </div>
+
+  <!-- JS final (melhor prática para DOM já carregado) -->
+  <script src="script5.js"></script>
+</body>
+</html>
