@@ -75,15 +75,37 @@ function enviarCodigo() {
   iniciarExpiracao();
 }
 
-function gerarENviarCodigo() {
+async function gerarENviarCodigo() {
   codigoGerado = gerarCodigo();
   const codigoObj = {
     codigo: codigoGerado,
     expiracao: Date.now() + expiracaoSegundos * 1000 // 5 minutos
   };
   localStorage.setItem(`codigoRecuperar_${usuarioRecuperar}`, JSON.stringify(codigoObj));
-  console.log('Código enviado (simulado):', codigoGerado);
+
+  // Enviar o código para o backend que manda email
+  const email = document.getElementById('emailRecuperar').value.trim();
+
+  try {
+    const response = await fetch('http://localhost:3000/enviar-codigo', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email, codigo: codigoGerado }),
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      mostrarMsg(`Erro ao enviar email: ${data.erro}`, 'erro');
+    } else {
+      mostrarMsg('Código enviado! Verifique seu e-mail', 'sucesso');
+      console.log('Código enviado:', codigoGerado);
+    }
+  } catch (err) {
+    mostrarMsg('Erro na comunicação com servidor', 'erro');
+    console.error(err);
+  }
 }
+
 
 function iniciarCooldown() {
   let segundos = cooldownSegundos;
