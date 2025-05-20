@@ -52,6 +52,68 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(planet);
     });
   }
+// === Cadastro ===
+  const formCadastro = document.querySelector("#formCadastro");
+  if (formCadastro) {
+    formCadastro.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const usuario = formCadastro.usuario.value.trim();
+      const senha = formCadastro.senha.value;
+      const confirmSenha = formCadastro.confirmSenha.value;
+      const email = formCadastro.email.value.trim();
+
+      if (senha !== confirmSenha) {
+        alert("As senhas não coincidem!");
+        return;
+      }
+
+      if (localStorage.getItem(`user_${usuario}`)) {
+        alert("Usuário já existe!");
+        return;
+      }
+
+      const dadosUsuario = {
+        senha: senha,
+        email: email
+      };
+
+      localStorage.setItem(`user_${usuario}`, JSON.stringify(dadosUsuario));
+      alert("Cadastro realizado com sucesso!");
+
+      window.location.href = "index.html"; // redireciona para login
+    });
+  }
+
+  // === Login ===
+  const formLogin = document.querySelector("#formLogin");
+  if (formLogin) {
+    formLogin.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const usuario = formLogin.usuario.value.trim();
+      const senha = formLogin.senha.value;
+
+      const dadosUsuarioJSON = localStorage.getItem(`user_${usuario}`);
+
+      if (!dadosUsuarioJSON) {
+        alert("Usuário não encontrado!");
+        return;
+      }
+
+      const dadosUsuario = JSON.parse(dadosUsuarioJSON);
+
+      if (senha !== dadosUsuario.senha) {
+        alert("Senha incorreta!");
+        return;
+      }
+
+      localStorage.setItem("usuarioLogado", usuario);
+      alert("Login realizado com sucesso!");
+      window.location.href = "conteudo.html";
+    });
+  }
+
 
   // === Verifica se está logado e mostra popup ===
   const usuarioLogado = localStorage.getItem("usuarioLogado");
