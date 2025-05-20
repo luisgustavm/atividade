@@ -157,12 +157,6 @@ function iniciarJogo(fundoImg, naveImg, planetaImgs) {
   document.getElementById("btnRestart").onclick = () => {
     voltarTelaInicio();
   };
-
-  // Botão "Outra Tela" volta para tela inicial também
-  document.getElementById("btnOther").onclick = () => {
-    voltarTelaInicio();
-  };
-
   atualizar();
 }
 

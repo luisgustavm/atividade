@@ -181,6 +181,7 @@ body.centralizado {
   margin-top: 80px; /* ou 100px, caso precise mais espaço */
   display: flex;
 }
+
 .menu-topo {
   position: fixed;
   top: 0;
@@ -200,6 +201,7 @@ body.centralizado {
   color: white;
   /* altura fixa do menu */
   overflow: visible;
+  text-align: center;
 }
 
 .menu-topo nav {
@@ -1082,33 +1084,6 @@ canvas {
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    button {
-      margin-top: 15px;
-      width: 180px;
-      padding: 10px 0;
-      font-size: 1rem;
-      background-color: #007bff;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    /* Segundo botão com cor diferente e margem menor */
-    button + button {
-      margin-top: 10px;
-      background-color: #6c757d;
-    }
-
-    button + button:hover {
-      background-color: #545b62;
     }
 
     .hidden {
