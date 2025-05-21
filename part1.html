@@ -7,7 +7,7 @@
   <script src="script.js" defer></script>
       <script src="script2.js" defer></script>
        <script src="script3.js" defer></script>
-
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 <canvas id="estrelasCanvas"></canvas>
@@ -18,6 +18,7 @@
     <button onclick="window.location.href='conteudo.html'">Início</button>
       <button onclick="window.location.href='part4.html'">Planetas</button>
       <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+            <button onclick="window.location.href='video.html'">Videos</button>
       <button onclick="window.location.href='part2.html'">Quiz</button>
     <button onclick="window.location.href='jogo.html'">jogo</button>
       <button onclick="window.location.href='loja.html'">Loja</button>
@@ -30,7 +31,6 @@
   <!-- Conteúdo principal -->
 <div class="planetas">
 
-  <!-- Mercúrio -->
   <div class="planeta-card">
     <img src="https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2023/12/Mercurio-retrogrado.jpg.jpg?w=1220&h=674&crop=1&quality=85" alt="Mercúrio" />
     <h2>Mercúrio</h2>
@@ -49,7 +49,7 @@
     <p><strong>Distância do Sol:</strong> 108 milhões de km</p>
     <p><strong>Diâmetro:</strong> 12.104 km</p>
     <p><strong>Translação:</strong> 225 dias</p>
-    <p><strong>Rotação:</strong> 243 dias (retrógrada)</p>
+    <p><strong>Rotação:</strong> 243 dias</p>
     <p><em>É o planeta mais quente, com temperaturas acima de 460°C.</em></p>
     <button onclick="window.location.href='planeta2.html'" class="btn-saiba-mais">Saiba mais</button>
   </div>
@@ -62,9 +62,21 @@
     <p><strong>Diâmetro:</strong> 12.742 km</p>
     <p><strong>Translação:</strong> 365 dias</p>
     <p><strong>Rotação:</strong> 24 horas</p>
-    <p><em>O único planeta conhecido com vida.</em></p>
+    <p><em>O único planeta conhecido até hoje que abriga vida, com muita diversidade.</em></p>
     <button onclick="window.location.href='planeta3.html'" class="btn-saiba-mais">Saiba mais</button>
   </div>
+
+  <!-- Lua -->
+<div class="planeta-card">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg" alt="Lua" />
+  <h2>Lua</h2>
+  <p><strong>Distância da Terra:</strong> 384.400 km</p>
+  <p><strong>Diâmetro:</strong> 3.474 km</p>
+  <p><strong>Translação (em torno da Terra):</strong> 27,3 dias</p>
+  <p><strong>Rotação:</strong> 27,3 dias</p>
+  <p><em>A Lua é o único satélite natural da Terra.</em></p>
+  <button onclick="window.location.href='planeta10.html'" class="btn-saiba-mais">Saiba mais</button>
+</div>
 
   <!-- Marte -->
   <div class="planeta-card">
@@ -126,10 +138,25 @@
     <button onclick="window.location.href='planeta8.html'" class="btn-saiba-mais">Saiba mais</button>
   </div>
 
+<!-- Plutão -->
+<div class="planeta-card">
+  <img src="https://image.portaldacidade.com/unsafe/https://bucket.portaldacidade.com/blumenau.portaldacidade.com/img/news/2024-02/afinal-plutao-e-planeta-ou-nao-65c0e54c8a9a1.png" alt="Plutão" />
+  <h2>Plutão</h2>
+  <p><strong>Distância do Sol:</strong> 5,9 bilhões de km</p>
+  <p><strong>Diâmetro:</strong> 2.377 km</p>
+  <p><strong>Translação:</strong> 248 anos</p>
+  <p><strong>Rotação:</strong> 6,4 dias</p>
+  <p><em>Plutão é um planeta anão e tem uma atmosfera composta principalmente por nitrogênio.</em></p>
+  <button onclick="window.location.href='planeta9.html'" class="btn-saiba-mais">Saiba mais</button>
 </div>
-<footer class="rodape">
+</div>
+ <footer class="rodape">
     <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+    <div class="logo-container2">
+     <img src="img/logo2.png" alt="Imagem do planeta" class="imagem-pequena2"/>
+     </div>
   </footer>
+
 
 <!-- Avatar no canto -->
 <div class="user-avatar" id="userAvatar">

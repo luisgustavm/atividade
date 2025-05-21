@@ -1,42 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Resultado do Quiz</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script2.js" defer></script> <!-- Contém o array perguntas -->
+  <script src="script7.js" defer></script>  <!-- Contém outras funções -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    #resultadoContainer {
+      max-width: 800px;
+      width: 100%;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .resposta-correta {
+      color: #0f0;
+    }
+
+    .resposta-errada {
+      color: #f33;
+    }
+
+    .btn-saiba-mais {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00f2ff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-saiba-mais:hover {
+      background-color: #0ff;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #444;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
-  <center><h1>Resultado do Quiz</h1></center>
-  <center><div id="resultadoContainer"></div></center>
-   <center><button onclick="window.location.href='part2.html'" class="btn-saiba-mais">Voltar</button></center>
+  <h1>Resultado do Quiz</h1>
+
+  <div id="resultadoContainer"></div>
+
+  <button onclick="window.location.href='part2.html'" class="btn-saiba-mais">Voltar</button>
 
   <script>
-    const perguntas = JSON.parse(localStorage.getItem("perguntasQuiz")) || [];
-    const respostasUsuario = JSON.parse(localStorage.getItem("respostasUsuario"));
+    document.addEventListener("DOMContentLoaded", () => {
+      const respostasUsuario = JSON.parse(localStorage.getItem("respostasUsuario") || "[]");
+      const container = document.getElementById("resultadoContainer");
 
-    fetch("script.js")
-      .then(r => r.text())
-      .then(code => {
-        const perguntasArray = eval(code.match(/const perguntas = \[(.*?)\];/s)[0] + " perguntas;");
-        const container = document.getElementById("resultadoContainer");
+      perguntas.forEach((q, i) => {
+        const userResp = respostasUsuario[i];
+        const correta = q.correta;
+        const corretaTexto = q.opcoes[correta];
+        const userTexto = q.opcoes[userResp] || "Não respondeu";
+        const acertou = userResp === correta;
 
-        perguntasArray.forEach((q, i) => {
-          const userResp = respostasUsuario[i];
-          const correta = q.correta;
-          const cor = userResp === correta ? "green" : "red";
-          container.innerHTML += `
-            <div style="margin-bottom: 15px;">
-              <p><strong>${i + 1}. ${q.pergunta}</strong></p>
-              <p style="color: ${cor};">
-                Sua resposta: ${q.opcoes[userResp] || "Não respondeu"} <br>
-                Correta: ${q.opcoes[correta]}
-              </p>
-              <p><em>${q.explicacao}</em></p>
-              <hr>
-            </div>
-          `;
-        });
+        container.innerHTML += `
+          <div>
+            <p><strong>${i + 1}. ${q.pergunta}</strong></p>
+            <p class="${acertou ? "resposta-correta" : "resposta-errada"}">
+              Sua resposta: ${userTexto}<br>
+              Correta: ${corretaTexto}
+            </p>
+            <p><em>${q.explicacao}</em></p>
+            <hr>
+          </div>
+        `;
       });
+    });
   </script>
 </body>
 </html>

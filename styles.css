@@ -4,7 +4,7 @@ body {
   padding: 0;
   min-height: 100%;
   background: linear-gradient(-45deg, #020024, #000000, #040d2e);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   background-attachment: fixed
 }
@@ -183,7 +183,7 @@ body.centralizado {
 }
 
 .menu-topo {
-  position: fixed;
+position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -195,6 +195,7 @@ body.centralizado {
   width: 95%;
   display: flex;
   align-items: center;
+  gap: 10px;
   justify-content: space-between;
   z-index: 9999;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -232,7 +233,33 @@ body.centralizado {
 .menu-topo nav::-webkit-scrollbar-track {
   background: transparent;
 }
+.imagem-pequena {
+  width: 95px;
+  height: 70px;
+  margin-right: 0;
+  
+}
+.imagem-pequena2 {
+  position: fixed;
+  bottom: 16px;
+  left: 40px;
+  width: 160px; /* ajuste conforme necessário */
+  height: auto;
+  opacity: 0.8;
+  z-index: 1000;
+  margin-left: 250px;
 
+}
+.logo-container2 {
+  display: flex;
+  align-items: center; /* centraliza verticalmente */ /* controla a distância entre imagem e texto */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 9px; /* controla o espaço entre a imagem e o texto */
+}
 
 .menu-topo h1 {
   margin: 0;
@@ -257,10 +284,6 @@ body.centralizado {
   cursor: pointer;
   transition: background-color 0.3s ease;
   user-select: none;
-}
-
-.menu-topo button:hover {
-  background-color: #2b2ba0;
 }
 
 /* Para telas pequenas, deixa o menu em coluna */
@@ -361,7 +384,7 @@ body.centralizado {
   padding: 0.8rem 1rem;
   font-size: 0.9rem;
   height: auto;
-  background: rgba(0, 0, 0, 0.377);
+  background-color: rgba(250, 250, 250, 0.481);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 15px;
@@ -372,10 +395,18 @@ body.centralizado {
   /* Alinha o conteúdo interno na parte inferior */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* faz o conteúdo do card ficar alinhado embaixo do card */
+  justify-content: flex-end;
+  margin-top: 20px; /* faz o conteúdo do card ficar alinhado embaixo do card */
 }
 
-
+@media (max-width: 400px) {
+  .login-container, .dashboard-container {
+    padding: 20px;
+  }
+  .planeta-card {
+    width: 90%;
+  }
+}
 .planeta-card img {
   width: 100%;
   height: 200px; /* diminui a altura da imagem */
@@ -387,8 +418,14 @@ body.centralizado {
   transform: scale(1.05);
   /* Não mexer na altura para não “pular” */
 }
-
-
+.planetas-container {
+  display: flex;
+  flex-wrap: nowrap; /* mantém os cards em linha única */
+  justify-content: center; /* centraliza horizontalmente */
+  gap: 20px; /* espaço entre os cards */
+  overflow-x: auto; /* permite scroll se os cards forem maiores que a tela */
+  padding: 20px;
+}
 .planeta-card.jupiter {
   border: 2px solid orange;
 }
@@ -446,7 +483,12 @@ body.centralizado {
   margin: 10px 0;
   font-size: 1.1em;
 }
-
+.quiz-container {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 .depoimentos {
   max-width: 600px;
   margin: 40px auto;
@@ -455,15 +497,19 @@ body.centralizado {
 }
 
 .rodape {
+  display: flex;
+  justify-content: center; /* centraliza os itens no meio */
+  align-items: center;
   text-align: center;
   margin-top: 80px;
-  color: #fff; /* cor branca para contraste */
-  font-size: 1.2em; /* aumenta o tamanho da letra */
+  color: #fff;
+  font-size: 1.2em;
   padding: 15px 20px;
-  background: rgba(0, 0, 0, 0.5); /* fundo escuro semitransparente */
-  border-top: 2px solid rgba(255, 255, 255, 0.4); /* borda superior */
-  backdrop-filter: blur(4px); /* desfoque suave no fundo */
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
   border-radius: 10px;
+  flex-wrap: wrap;
 }
 
 main {
@@ -946,18 +992,22 @@ canvas {
 
 /* Modal de Game Over */
 #gameOverModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 10, 10, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  z-index: 10;
   visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
-
+#gameOverModal.visible {
+  visibility: visible;
+  opacity: 1;
+}
 #gameOverContent {
   background: #111;
   padding: 30px;
@@ -1095,3 +1145,88 @@ canvas {
       font-weight: bold;
       text-align: center;
     }
+#resultadoContainer {
+max-width: 700px;
+width: 100%;
+text-align: center;
+}
+
+#resultadoContainer > div {
+margin-bottom: 15px;
+border-bottom: 1px solid #444;
+padding-bottom: 10px;
+}
+
+.btn-saiba-mais {
+ margin-top: 30px;
+padding: 10px 20px;
+font-weight: 700;
+cursor: pointer;
+background-color: #1e90ff;
+border: none;
+-radius: 5px;
+color: white;
+transition: background-color 0.3s ease;
+}
+.btn-saiba-mais:hover {
+background-color: #63b3ff;
+}
+
+.imagem-planeta {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+.galeria-videos {
+  margin: 80px auto;
+  padding: 20px;
+  max-width: 1100px;
+  text-align: center;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+}
+
+.galeria-videos h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.videos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.video-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 15px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+  transform: scale(1.03);
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+}
+
+.video-card p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #ccc;
+}

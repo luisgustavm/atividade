@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Vídeos Espaciais</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  </head>
+<body>
+  
+  <header class="menu-topo">
+      <h1>Universo em Vídeo</h1>
+    <nav>
+      <button onclick="window.location.href='conteudo.html'">Início</button>
+      <button onclick="window.location.href='part1.html'">Planetas</button>
+      <button onclick="window.location.href='telaanimada.html'">Mistérios Cósmicos</button>
+      <button onclick="window.location.href='video.html'">Videos</button>
+      <button onclick="window.location.href='part2.html'">Quiz</button>
+      <button onclick="window.location.href='part3.html'">Feedback</button>
+    </nav>
+     <div class="saldo-estrelas">⭐ <span id="moedaSaldo">0</span></div>
+  </header>
+
+  <section class="galeria-videos">
+    <h2>Galeria Espacial: Descubra os Mistérios do Cosmos</h2>
+
+    <div class="videos-grid">
+       <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/glym-8xkBbU" allowfullscreen></iframe>
+                <div class="video-title">Mercúrio - O Planeta Mais Veloz e Mais Próximo do Sol</div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/cYVmBL4KGx4" allowfullscreen></iframe>
+                <div class="video-title">Como é a Superfície de Vênus? - Imagens Reais do Planeta</div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/otRG8cODExo" allowfullscreen></iframe>
+                <div class="video-title">Veja como era a TERRA HÁ 4.5 BILHÕES DE ANOS - A Origem do Planeta Terra !!</div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/kRzaMufHH8g" allowfullscreen></iframe>
+                <div class="video-title">NASA Lança Missão para Lua de Júpiter</div>
+            </div>
+            <!-- Vida em Marte -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/j0IDk7mh-DI" allowfullscreen></iframe>
+                <div class="video-title">O Dia em que Quase Encontramos Vida em Marte</div>
+            </div>
+            <!-- Planetas -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/_7tU8-LHPDI" allowfullscreen></iframe>
+                <div class="video-title">VIAJANDO PARA SATURNO E CONHECENDO SEUS MISTÉRIOS!!</div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/7er8xGIMdFw" allowfullscreen></iframe>
+                <div class="video-title">Urano - Tudo Sobre o Planeta Mais Frio do Sistema Solar</div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/R1o1GIOZZYk" allowfullscreen></iframe>
+                <div class="video-title">Nosso SISTEMA SOLAR | Netuno | Astrum Brasil | #8</div>
+            </div>
+
+            <!-- Pilares da Criação -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/GbJJRsS6OR4" allowfullscreen></iframe>
+                <div class="video-title">Buracos Negros Explicados</div>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/42-Gmv4Xs9Y" allowfullscreen></iframe>
+                <div class="video-title">Os Pilares da Criação</div>
+            </div>
+
+            <!-- Nebulosa -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/N7TqLSXkSG0" allowfullscreen></iframe>
+                <div class="video-title">Nebulosa</div>
+            </div>
+
+            <!-- Pulsar -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/gjLk_72V9Bw" allowfullscreen></iframe>
+                <div class="video-title">O que é um Pulsar?</div>
+            </div>
+
+            <!-- Estrela Gigante -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/ct6l-didgrs" allowfullscreen></iframe>
+                <div class="video-title">Estrelas Gigantes e Supergigantes</div>
+            </div>
+
+             <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/LsyJMXrgSLY" allowfullscreen></iframe>
+                <div class="video-title">TUDO QUE VOCÊ PRECISA SABER Sobre PLUTÃO</div>
+            </div>
+    </div>
+  </section>
+
+<div class="user-avatar" id="userAvatar">
+  <img src="https://i.pravatar.cc/50" alt="Avatar do usuário" />
+</div>
+
+<div class="user-info-popup" id="userInfoPopup">
+  <h3>Informações do Usuário</h3>
+  <p><strong>Nome:</strong> <span></span></p>
+  <p><strong>Email:</strong> <span></span></p>
+  <button id="closePopup">Fechar</button>
+  <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+  <input type="file" id="avatarInput" accept="image/*" style="display: none;" />
+<button id="changeAvatarBtn" class="change-avatar-btn">Trocar Foto</button>
+</div>
+
+  <footer class="rodape">
+    <p>&copy; 2025 Universo Interativo. Todos os direitos reservados.</p>
+    <img src="img/logo2.png" alt="Imagem do planeta" class="imagem-pequena2" />
+  </footer>
+</body>
+</html>
