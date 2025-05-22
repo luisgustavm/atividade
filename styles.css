@@ -160,12 +160,13 @@ body {
 
 body.centralizado {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;      /* empilha os elementos verticalmente */
+  align-items: center;         /* centraliza horizontalmente */
+  justify-content: flex-start; /* alinha tudo no topo da tela */
   min-height: 100vh;
-  text-align: center;
+  padding-top: 40px;           /* espaço do topo para o título */
+  text-align: center;          /* centraliza o texto do título */
 }
-
 
 /* Tela de dashboard (conteúdo) */
 .dashboard-container {
@@ -247,18 +248,19 @@ position: fixed;
   height: auto;
   opacity: 0.8;
   z-index: 1000;
-  margin-left: 250px;
+  margin-left: 120px;
 
 }
 .logo-container2 {
   display: flex;
-  align-items: center; /* centraliza verticalmente */ /* controla a distância entre imagem e texto */
+  align-items: center;
+   /* centraliza verticalmente */ /* controla a distância entre imagem e texto */
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 9px; /* controla o espaço entre a imagem e o texto */
+  gap: 100px; /* controla o espaço entre a imagem e o texto */
 }
 
 .menu-topo h1 {
@@ -433,7 +435,7 @@ position: fixed;
   text-align: center;
   margin-top: 100px;
   padding: 100px 6px;
-  background-color: rgba(0, 0, 0, 0.425);
+  background-color: rgba(172, 172, 172, 0.171);
   border-radius: 20px;
   backdrop-filter: blur(5px);
 }
@@ -441,7 +443,7 @@ position: fixed;
   text-align: center;
   margin-top: 40px; /* diminui de 100px para 40px */
   padding: 8px 6px; /* diminui um pouco o padding vertical */
-   background-color: rgba(102, 102, 102, 0.425);
+   background-color: rgba(172, 172, 172, 0.329);
   border-radius: 20px;
   backdrop-filter: blur(5px);
 }
